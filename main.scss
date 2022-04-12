@@ -1,0 +1,190 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+$background: #2f363e;
+$white: #fff;
+$green: #04fc43;
+$yellow: #fee800;
+$red: #ff2972;
+
+body {
+  background-color: $background;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+}
+
+.container {
+  background-color: $background;
+  box-shadow: 15px 15px 70px rgba(0, 0, 0, 0.25),
+    -15px -15px 70px rgba(0, 0, 0, 0.25), inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+    inset -5px -5px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  border-radius: 225px 225px 20px 20px;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  .clock {
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    box-shadow: 15px 15px 70px rgba(0, 0, 0, 0.25),
+      -15px -15px 70px rgba(0, 0, 0, 0.25),
+      inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+      inset -5px -5px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+    position: relative;
+
+    .circle-1,
+    .circle-2,
+    .circle-3 {
+      border-radius: 50%;
+      border: 2px solid rgba(0, 0, 0, 0.25);
+      position: absolute;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &::after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border: 2px solid $white;
+        border-radius: 50%;
+        z-index: 1000;
+        transform: rotate(30deg);
+        position: absolute;
+        top: -5px;
+      }
+      span {
+        bottom: 50%;
+        transform-origin: bottom;
+      }
+    }
+    .circle-1 {
+      width: 70%;
+      height: 70%;
+      z-index: 7;
+      &::after {
+        content: "";
+        border: 2px solid $green;
+        background-color: $green;
+        box-shadow: 3px 3px 10px $green, -3px -3px 10px $green;
+      }
+
+      span {
+        height: 25%;
+        width: 2px;
+        background-color: $green;
+        position: absolute;
+      }
+    }
+    .circle-2 {
+      width: 60%;
+      height: 60%;
+      z-index: 8;
+      &::after {
+        content: "";
+        border: 2px solid $yellow;
+        background-color: $yellow;
+        box-shadow: 3px 3px 10px $yellow, -3px -3px 10px $yellow;
+      }
+      span {
+        height: 20%;
+        width: 3px;
+        background-color: $yellow;
+        position: absolute;
+      }
+    }
+    .circle-3 {
+      width: 50%;
+      height: 50%;
+      z-index: 9;
+      &::after {
+        content: "";
+        border: 2px solid $red;
+        background-color: $red;
+        box-shadow: 3px 3px 10px $red, -3px -3px 10px $red;
+      }
+      span {
+        height: 15%;
+        width: 5px;
+        background-color: $red;
+        position: absolute;
+      }
+    }
+
+    > span {
+      position: absolute;
+      text-align: center;
+      inset: 20px;
+      transform: rotate(var(--rotate));
+      opacity: .5;
+    }
+  }
+  .clock::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border: 2px solid $white;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1000;
+  }
+
+  .digit {
+    margin-bottom: 30px;
+    background-color: $background;
+    box-shadow: 15px 15px 70px rgba(0, 0, 0, 0.25),
+    -15px -15px 70px rgba(0, 0, 0, 0.25),
+    inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+    inset -5px -5px 10px rgba(0, 0, 0, 0.5);
+    padding: 15px 30px;
+    border-radius: 20px;
+    width: 40%;
+    text-align: center;
+    font-weight: bold;
+
+    span:first-of-type , span:nth-of-type(2){
+        color: $red;
+    }
+    span:nth-of-type(3) , span:nth-of-type(4){
+        color: $yellow;
+    }
+    span:nth-of-type(4) , span:nth-of-type(2){
+        animation: transpate 1s ease-in-out infinite;
+    }
+    span:nth-of-type(5) {
+        color: $green;
+    }
+    span:nth-of-type(6) {
+        float: right;
+        font-size: small;
+        font-weight: bold;
+    }
+  }
+  @keyframes transpate {
+      0%{
+          opacity: 0;
+      }
+      50%{
+          opacity: 1;
+      }
+  }
+
+}
+
+
